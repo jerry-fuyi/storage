@@ -9,9 +9,9 @@
                     "id": "881bc2fd-a3ed-48fd-a54e-b87307414c4c",
                     "level": 1,
                     "alterId": 100
-                },
+                }
             ]
-        },
+        }
     },
     {
         "port": 18036,
@@ -22,9 +22,9 @@
                     "id": "ca08cead-36dd-4e49-8a9b-f80e2d92bfd3",
                     "level": 1,
                     "alterId": 100
-                },
+                }
             ]
-        },
+        }
     },
     {
         "port": 35696,
@@ -35,9 +35,9 @@
                     "id": "7eac7efa-7e19-4607-9068-a84a9aa33be3",
                     "level": 1,
                     "alterId": 100
-                },
+                }
             ]
-        },
+        }
     },
     {
         "port": 45906,
@@ -48,28 +48,24 @@
                     "id": "5c97740e-fcb5-41bd-9d25-cabf7cd42597",
                     "level": 1,
                     "alterId": 100
-                },
+                }
             ]
-        },
+        }
     }],
     "outbounds": [{
         "protocol": "freedom",
         "settings": {}
-    },{
+    },
+    {
         "protocol": "blackhole",
         "settings": {},
         "tag": "blocked"
     }],
     "routing": {
-        "strategy": "rules",
-        "settings": {
-            "rules": [
-                {
-                    "type": "field",
-                    "ip": ["geoip:private"],
-                    "outboundTag": "blocked"
-                }
-            ]
-        }
+        "rules": [{
+            "type": "field",
+            "ip": ["geoip:private"],
+            "outboundTag": "blocked"
+        }]
     }
 }
