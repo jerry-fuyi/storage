@@ -1,0 +1,139 @@
+{
+    "log": {
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log",
+        "loglevel": "warning"
+    },
+    "inbounds": [
+    {
+        "port": 8385,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "id": "881bc2fd-a3ed-48fd-a54e-b87307414c4c",
+                    "level": 1,
+                    "alterId": 100
+                },
+            ]
+        },
+        "streamSettings": {
+            "network": "kcp"
+        },
+        "detour": {
+            "to": "vmess-detour-835374"
+        }
+    },
+    {
+        "port": 18036,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "id": "ca08cead-36dd-4e49-8a9b-f80e2d92bfd3",
+                    "level": 1,
+                    "alterId": 100
+                },
+            ]
+        },
+        "streamSettings": {
+            "network": "kcp"
+        },
+        "detour": {
+            "to": "vmess-detour-835374"
+        }
+    },
+    {
+        "port": 35696,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "id": "7eac7efa-7e19-4607-9068-a84a9aa33be3",
+                    "level": 1,
+                    "alterId": 100
+                },
+            ]
+        },
+        "streamSettings": {
+            "network": "kcp"
+        },
+        "detour": {
+            "to": "vmess-detour-835374"
+        }
+    },
+    {
+        "port": 45906,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "id": "5c97740e-fcb5-41bd-9d25-cabf7cd42597",
+                    "level": 1,
+                    "alterId": 100
+                },
+            ]
+        },
+        "streamSettings": {
+            "network": "kcp"
+        },
+        "detour": {
+            "to": "vmess-detour-835374"
+        }
+    }],
+    "outbound": {
+        "protocol": "freedom",
+        "settings": {}
+    },
+    "inboundDetour": [
+        {
+            "protocol": "vmess",
+            "port": "10000-10010",
+            "tag": "vmess-detour-835374",
+            "settings": {},
+            "allocate": {
+                "strategy": "random",
+                "concurrency": 5,
+                "refresh": 5
+            },
+            "streamSettings": {
+                "network": "kcp"
+            }
+        }
+    ],
+    "outboundDetour": [
+        {
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        }
+    ],
+    "routing": {
+        "strategy": "rules",
+        "settings": {
+            "rules": [
+                {
+                    "type": "field",
+                    "ip": [
+                        "0.0.0.0/8",
+                        "10.0.0.0/8",
+                        "100.64.0.0/10",
+                        "127.0.0.0/8",
+                        "169.254.0.0/16",
+                        "172.16.0.0/12",
+                        "192.0.0.0/24",
+                        "192.0.2.0/24",
+                        "192.168.0.0/16",
+                        "198.18.0.0/15",
+                        "198.51.100.0/24",
+                        "203.0.113.0/24",
+                        "::1/128",
+                        "fc00::/7",
+                        "fe80::/10"
+                    ],
+                    "outboundTag": "blocked"
+                }
+            ]
+        }
+    }
+}
